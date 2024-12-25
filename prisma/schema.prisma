@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Flower {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  color String
+  price Float
+  quantity Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  thumbnail String
+}
